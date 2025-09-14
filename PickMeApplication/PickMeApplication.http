@@ -1,0 +1,55 @@
+@PickMeApplication_HostAddress = http://localhost:5186
+
+### WeatherForecast example
+GET {{PickMeApplication_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+### Register a new user
+POST {{PickMeApplication_HostAddress}}/api/users
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "email": "test@example.com",
+  "password": "Password123!",
+  "firstName": "Test",
+  "lastName": "User"
+}
+
+### Login with the created user
+# @name login
+POST {{PickMeApplication_HostAddress}}/api/users/login
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "password": "Password123!"
+}
+
+### Capture the token from the login response
+@auth_token = {{login.response.body.token}}
+@user_id = {{login.response.body.userId}}
+
+### Get all users (requires authorization)
+GET {{PickMeApplication_HostAddress}}/api/users
+Authorization: Bearer {{auth_token}}
+
+### Get user by ID (requires authorization)
+GET {{PickMeApplication_HostAddress}}/api/users/{{user_id}}
+Authorization: Bearer {{auth_token}}
+
+### Update user (requires authorization)
+PUT {{PickMeApplication_HostAddress}}/api/users/{{user_id}}
+Content-Type: application/json
+Authorization: Bearer {{auth_token}}
+
+{
+  "firstName": "Updated",
+  "lastName": "Name"
+}
+
+### Delete user (requires authorization)
+DELETE {{PickMeApplication_HostAddress}}/api/users/{{user_id}}
+Authorization: Bearer {{auth_token}}
