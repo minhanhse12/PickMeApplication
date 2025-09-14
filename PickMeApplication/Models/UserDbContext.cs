@@ -1,6 +1,6 @@
-﻿namespace PickMeApplication.Models;
+﻿using Microsoft.EntityFrameworkCore;
+namespace PickMeApplication.Models
 
-using Microsoft.EntityFrameworkCore;
 {
     public class UserDbContext : DbContext
     {
@@ -18,26 +18,30 @@ using Microsoft.EntityFrameworkCore;
                 entity.HasKey(u => u.Id);
 
                 entity.Property(u => u.Id)
-                    .HasColumnType("char(36)");
+                      .HasColumnType("char(36)");
 
                 entity.Property(u => u.Username)
-                    .IsRequired()
-                    .HasMaxLength(100);
+                      .IsRequired()
+                      .HasMaxLength(100);
 
                 entity.Property(u => u.Email)
-                    .IsRequired()
-                    .HasMaxLength(255);
+                      .IsRequired()
+                      .HasMaxLength(255);
 
                 entity.Property(u => u.PasswordHash)
-                    .IsRequired()
-                    .HasMaxLength(255);
+                      .IsRequired()
+                      .HasMaxLength(255);
+                
+                entity.Property(u => u.Role)
+                      .IsRequired()
+                      .HasMaxLength(50);
 
                 entity.Property(u => u.CreatedAt)
-                    .IsRequired();
+                      .IsRequired();
 
                 entity.Property(u => u.IsActive)
-                    .IsRequired()
-                    .HasDefaultValue(true);
+                      .IsRequired()
+                      .HasDefaultValue(true);
             });
         }
     }

@@ -183,6 +183,7 @@ public class UserService : IUserService
             user.Email,
             user.FirstName,
             user.LastName,
+            user.Role,
             user.CreatedAt,
             user.LastLoginAt,
             user.IsActive

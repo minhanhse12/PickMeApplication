@@ -52,3 +52,4 @@ E:\Temp\PickMeApplication\PickMeApplication\bin\Debug\net9.0\Microsoft.Extension
 E:\Temp\PickMeApplication\PickMeApplication\bin\Debug\net9.0\Microsoft.Extensions.Primitives.dll
 E:\Temp\PickMeApplication\PickMeApplication\bin\Debug\net9.0\MySqlConnector.dll
 E:\Temp\PickMeApplication\PickMeApplication\bin\Debug\net9.0\Pomelo.EntityFrameworkCore.MySql.dll
+E:\Temp\PickMeApplication\PickMeApplication\obj\Debug\net9.0\PickMeApplication.sourcelink.json

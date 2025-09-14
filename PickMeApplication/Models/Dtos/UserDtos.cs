@@ -6,6 +6,7 @@ public record UserDto(
     string Email,
     string FirstName,
     string LastName,
+    string Role,
     DateTime CreatedAt,
     DateTime? LastLoginAt,
     bool IsActive
@@ -15,6 +16,7 @@ public record CreateUserDto(
     string Username,
     string Email,
     string Password,
+    string Role,
     string FirstName,
     string LastName
 );
