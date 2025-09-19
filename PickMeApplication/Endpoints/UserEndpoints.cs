@@ -12,6 +12,7 @@ public static class UserEndpoints
             .WithTags("Users")
             .WithOpenApi();
         
+        // GET /api/users - Get all users
         userGroup.MapGet("/", async (IUserService userService) =>
         {
             try
@@ -23,7 +24,10 @@ public static class UserEndpoints
             {
                 return Results.Problem(ex.Message);
             }
-        }).RequireAuthorization();
+        })
+        .WithName("GetAllUsers")
+        .WithDescription("Retrieves all users")
+        .RequireAuthorization();
 
         // GET /api/users/{id} - Get a user by ID
         userGroup.MapGet("/{id:guid}", async (IUserService userService, Guid id) =>
@@ -40,8 +44,12 @@ public static class UserEndpoints
             {
                 return Results.Problem(ex.Message);
             }
-        }).RequireAuthorization();
+        })
+        .WithName("GetUserById")
+        .WithDescription("Retrieves a specific user by their ID")
+        .RequireAuthorization();
         
+        // POST /api/users - Create a new user
         userGroup.MapPost("/", async (IUserService userService, [FromBody] CreateUserDto createUserDto) =>
         {
             try
@@ -57,8 +65,11 @@ public static class UserEndpoints
             {
                 return Results.Problem(ex.Message);
             }
-        });
+        })
+        .WithName("CreateUser")
+        .WithDescription("Creates a new user account");
         
+        // PUT /api/users/{id} - Update an existing user
         userGroup.MapPut("/{id:guid}", async (IUserService userService, Guid id, [FromBody] UpdateUserDto updateUserDto) =>
         {
             try
@@ -77,8 +88,12 @@ public static class UserEndpoints
             {
                 return Results.Problem(ex.Message);
             }
-        }).RequireAuthorization();
+        })
+        .WithName("UpdateUser")
+        .WithDescription("Updates an existing user's information")
+        .RequireAuthorization();
         
+        // DELETE /api/users/{id} - Delete a user
         userGroup.MapDelete("/{id:guid}", async (IUserService userService, Guid id) =>
         {
             try
@@ -93,8 +108,12 @@ public static class UserEndpoints
             {
                 return Results.Problem(ex.Message);
             }
-        }).RequireAuthorization();
+        })
+        .WithName("DeleteUser")
+        .WithDescription("Deletes a user account")
+        .RequireAuthorization();
         
+        // POST /api/users/login - Authenticate a user
         userGroup.MapPost("/login", async (IUserService userService, [FromBody] UserLoginDto loginDto) =>
         {
             try
@@ -109,8 +128,11 @@ public static class UserEndpoints
             {
                 return Results.Problem(ex.Message);
             }
-        });
+        })
+        .WithName("LoginUser")
+        .WithDescription("Authenticates a user and returns a JWT token");
         
+        // GET /api/users/profile - Get current user profile
         userGroup.MapGet("/profile", (HttpContext context) =>
         {
             var userId = context.User.FindFirst("sub")?.Value;
@@ -118,6 +140,9 @@ public static class UserEndpoints
                 return Results.Unauthorized();
 
             return Results.Ok(new { UserId = userId });
-        }).RequireAuthorization();
+        })
+        .WithName("GetUserProfile")
+        .WithDescription("Retrieves the profile of the currently authenticated user")
+        .RequireAuthorization();
     }
 }

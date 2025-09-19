@@ -53,3 +53,8 @@ E:\Temp\PickMeApplication\PickMeApplication\bin\Debug\net9.0\Microsoft.Extension
 E:\Temp\PickMeApplication\PickMeApplication\bin\Debug\net9.0\MySqlConnector.dll
 E:\Temp\PickMeApplication\PickMeApplication\bin\Debug\net9.0\Pomelo.EntityFrameworkCore.MySql.dll
 E:\Temp\PickMeApplication\PickMeApplication\obj\Debug\net9.0\PickMeApplication.sourcelink.json
+E:\Temp\PickMeApplication\PickMeApplication\bin\Debug\net9.0\PickMeApplication.xml
+E:\Temp\PickMeApplication\PickMeApplication\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+E:\Temp\PickMeApplication\PickMeApplication\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+E:\Temp\PickMeApplication\PickMeApplication\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+E:\Temp\PickMeApplication\PickMeApplication\obj\Debug\net9.0\PickMeApplication.xml

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PickMeApplication")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f8f4e5dc4d958669a95e0feb456b8d4ec4586b08")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bbc3dce0d39a50bd90d545c896f0b62bc6d6cd1b")]
 [assembly: System.Reflection.AssemblyProductAttribute("PickMeApplication")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PickMeApplication")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
