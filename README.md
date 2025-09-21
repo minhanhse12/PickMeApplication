@@ -15,17 +15,17 @@ This application follows a **microservices architecture** with the **Database pe
 
 ### 🔧 Core Services
 
-| Service | Port | Database | Description |
-|---------|------|----------|-------------|
-| **User Service** | 5024 | `PickMeUserService_Dev` | Authentication, user management, roles |
-| **Restaurant Service** | TBD | `PickMeRestaurantService_Dev` | Restaurant profiles, locations |
-| **Menu Service** | TBD | `PickMeMenuService_Dev` | Menu items, pricing, availability |
-| **Order Service** | TBD | `PickMeOrderService_Dev` | Order processing, pickup scheduling |
-| **Payment Service** | TBD | `PickMePaymentService_Dev` | Payment processing, transactions |
-| **Location Service** | TBD | `PickMeLocationService_Dev` | Route suggestions, GPS integration |
-| **Campaign Service** | TBD | `PickMeCampaignService_Dev` | Promotions, discounts |
-| **Notification Service** | TBD | `PickMeNotificationService_Dev` | Email, SMS, push notifications |
-| **AI Service** | TBD | `PickMeAIService_Dev` | Time optimization, route intelligence |
+| Service                  | Port | Database                        | Description                            |
+| ------------------------ | ---- | ------------------------------- | -------------------------------------- |
+| **User Service**         | 5024 | `PickMeUserService_Dev`         | Authentication, user management, roles |
+| **Restaurant Service**   | TBD  | `PickMeRestaurantService_Dev`   | Restaurant profiles, locations         |
+| **Menu Service**         | TBD  | `PickMeMenuService_Dev`         | Menu items, pricing, availability      |
+| **Order Service**        | TBD  | `PickMeOrderService_Dev`        | Order processing, pickup scheduling    |
+| **Payment Service**      | TBD  | `PickMePaymentService_Dev`      | Payment processing, transactions       |
+| **Location Service**     | TBD  | `PickMeLocationService_Dev`     | Route suggestions, GPS integration     |
+| **Campaign Service**     | TBD  | `PickMeCampaignService_Dev`     | Promotions, discounts                  |
+| **Notification Service** | TBD  | `PickMeNotificationService_Dev` | Email, SMS, push notifications         |
+| **AI Service**           | TBD  | `PickMeAIService_Dev`           | Time optimization, route intelligence  |
 
 ### 🛠️ Infrastructure Services
 
@@ -63,12 +63,14 @@ Service/
 ### Running the Application
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/minhanhse12/PickMeApplication.git
    cd PickMeApplication
    ```
 
 2. **Setup MySQL Database**
+
    ```bash
    # Update connection string in appsettings.Development.json
    "ConnectionStrings": {
@@ -77,11 +79,13 @@ Service/
    ```
 
 3. **Run Database Migrations**
+
    ```bash
    dotnet ef database update --project "src/Services/UserService/PickMeApplication.UserService.Infrastructure" --startup-project "src/Services/UserService/PickMeApplication.UserService.API"
    ```
 
 4. **Start User Service**
+
    ```bash
    dotnet run --project "src/Services/UserService/PickMeApplication.UserService.API/PickMeApplication.UserService.API.csproj"
    ```
@@ -94,6 +98,7 @@ Service/
 ### API Testing
 
 Use the provided `.http` files in each service's API project:
+
 - `UserService.http` - Test user operations
 
 ### Available Endpoints (User Service)
@@ -111,8 +116,9 @@ Use the provided `.http` files in each service's API project:
 The application uses the **Saga pattern** for managing distributed transactions:
 
 ### Example: Order Placement Saga
+
 1. **Order Created** → Order Service
-2. **Payment Processing** → Payment Service  
+2. **Payment Processing** → Payment Service
 3. **Restaurant Notification** → Notification Service
 4. **Menu Item Reservation** → Menu Service
 5. **Location Calculation** → Location Service
