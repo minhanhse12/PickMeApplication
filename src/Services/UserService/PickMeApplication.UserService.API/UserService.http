@@ -1,0 +1,75 @@
+@UserService_HostAddress = http://localhost:5024
+
+### Health check
+GET {{UserService_HostAddress}}/swagger/index.html
+
+###
+
+### Register a new user
+POST {{UserService_HostAddress}}/api/users
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "email": "test@example.com",
+  "password": "Password123!",
+  "firstName": "Test",
+  "lastName": "User",
+  "role": "Customer"
+}
+
+###
+
+### Login user
+POST {{UserService_HostAddress}}/api/users/login
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "password": "Password123!"
+}
+
+###
+
+### Get all users (requires authentication)
+GET {{UserService_HostAddress}}/api/users
+Authorization: Bearer {{token}}
+
+###
+
+### Get user by ID
+GET {{UserService_HostAddress}}/api/users/{{userId}}
+Authorization: Bearer {{token}}
+
+###
+
+### Update user
+PUT {{UserService_HostAddress}}/api/users/{{userId}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "username": "updateduser",
+  "email": "updated@example.com",
+  "firstName": "Updated",
+  "lastName": "User",
+  "role": "Customer"
+}
+
+###
+
+### Change password
+POST {{UserService_HostAddress}}/api/users/{{userId}}/change-password
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "currentPassword": "Password123!",
+  "newPassword": "NewPassword123!"
+}
+
+###
+
+### Delete user
+DELETE {{UserService_HostAddress}}/api/users/{{userId}}
+Authorization: Bearer {{token}}
