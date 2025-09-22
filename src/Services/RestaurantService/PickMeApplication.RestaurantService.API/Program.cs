@@ -77,7 +77,7 @@ builder.Services.AddSwaggerGen(c =>
 // CORS Configuration
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAll", policy =>
+    options.AddPolicy("AllowFlutter", policy =>
     {
         policy.AllowAnyOrigin()
               .AllowAnyHeader()
@@ -104,7 +104,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseCors("AllowAll");
+// Enable CORS for Flutter frontend
+app.UseCors("AllowFlutter");
 
 app.MapControllers();
 
