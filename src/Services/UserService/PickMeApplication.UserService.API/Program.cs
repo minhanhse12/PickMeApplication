@@ -14,6 +14,16 @@ using PickMeApplication.UserService.Infrastructure.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Configure Kestrel to listen on all IP addresses
+builder.WebHost.ConfigureKestrel(serverOptions =>
+{
+    serverOptions.ListenAnyIP(5024); // HTTP port
+    serverOptions.ListenAnyIP(7027, options => // HTTPS port
+    {
+        options.UseHttps();
+    });
+});
+
 // Add services to the container.
 builder.Services.AddControllers();
 

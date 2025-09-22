@@ -9,6 +9,16 @@ using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Configure Kestrel to listen on all IP addresses
+builder.WebHost.ConfigureKestrel(serverOptions =>
+{
+    serverOptions.ListenAnyIP(5265); // HTTP port
+    serverOptions.ListenAnyIP(7289, options => // HTTPS port
+    {
+        options.UseHttps();
+    });
+});
+
 // Add services to the container.
 builder.Services.AddControllers();
 
